@@ -12,9 +12,7 @@ import Body from "./layouts/Body";
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="">
-        <Header />
-      </div>
+      <Header />
       <Body>
         <Routes>
           {/* <Route path="/" element={<HomePage />} />

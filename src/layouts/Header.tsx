@@ -13,6 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import logo from "../assets/img/dionysus-logo-transparent.png"; // Import the logo
 
 interface NavButton {
   label: string;
@@ -34,14 +35,14 @@ const Header: React.FC = () => {
 
   return (
     <AppBar className="border-none bg-gradient-to-b from-slate-900 to-purple-900">
-      <Toolbar className="flex items-center justify-between px-4 ">
+      <Toolbar className="flex items-center justify-between px-4">
         <Typography
           variant="h4"
           component={Link}
           to="/"
           className="font-bold font-kalina flex-grow bg-gradient-to-tr from-pink-400 to-purple-900 bg-clip-text text-transparent hover:text-brand-light text-left"
         >
-          Dionysus
+          <img src={logo} alt="Dionysus Logo" className="w-20 h-20 p-3"></img>
         </Typography>
 
         {/* Desktop Navigation */}
