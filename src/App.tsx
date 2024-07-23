@@ -1,9 +1,9 @@
 // src/App.tsx
-import React from 'react';
-import { BrowserRouter as Router, Routes} from 'react-router-dom';
-import Header from './layouts/Header';
-import Footer from './layouts/Footer';
-import Body from './layouts/Body';
+import React from "react";
+import { BrowserRouter as Router, Routes } from "react-router-dom";
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+import Body from "./layouts/Body";
 // import HomePage from './pages/HomePage';
 // import WatchlistPage from './pages/WatchlistPage';
 // import HistoryPage from './pages/HistoryPage';
@@ -12,7 +12,9 @@ import Body from './layouts/Body';
 const App: React.FC = () => {
   return (
     <Router>
-      <Header />
+      <div className="">
+        <Header />
+      </div>
       <Body>
         <Routes>
           {/* <Route path="/" element={<HomePage />} />

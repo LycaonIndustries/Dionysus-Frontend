@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 html {
-  width: 100%;
+  width: 100%; /* Good practice, but often redundant */
 }
 
-:root {
+:root { 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -33,11 +33,18 @@ a:hover {
 
 body {
   width: 100%;
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  margin: 0; 
+  /* Remove or adjust: */
+  /* display: flex; 
+  place-items: center; 
+  */
+  /* Remove or adjust: */
+  /* min-width: 320px; */
+  min-height: 100vh; 
+}
+
+.main { 
+  width: 100%; 
 }
 
 h1 {

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -20,10 +20,8 @@ interface NavButton {
 }
 
 const navButtons: NavButton[] = [
-  { label: "Home", path: "/" },
   { label: "Watchlist", path: "/watchlist" },
   { label: "History", path: "/history" },
-  { label: "Account", path: "/account" },
 ];
 
 const Header: React.FC = () => {
@@ -35,35 +33,41 @@ const Header: React.FC = () => {
   };
 
   return (
-    <AppBar
-      position="fixed"
-      className="bg-transparent" // Using Tailwind for background
-    >
-      <Toolbar className="flex textitems-center justify-between px-4 bg-brand-dark">
+    <AppBar className="border-none bg-gradient-to-b from-slate-900 to-purple-900">
+      <Toolbar className="flex items-center justify-between px-4 ">
         <Typography
-          variant="h6"
+          variant="h4"
           component={Link}
           to="/"
-          className="font-bold text-xl flex-grow text-brand-light"
+          className="font-bold font-kalina flex-grow bg-gradient-to-tr from-pink-400 to-purple-900 bg-clip-text text-transparent hover:text-brand-light text-left"
         >
           Dionysus
         </Typography>
 
         {/* Desktop Navigation */}
         {isDesktop && (
-          <div className="flex">
-            {navButtons.map((button) => (
-              <Button
-                key={button.label}
-                color="inherit"
-                component={Link}
-                to={button.path}
-                className="text-white hover:text-gray-300"
-              >
-                {button.label}
-              </Button>
-            ))}
-          </div>
+          <nav className="m-2 p-2">
+            <ul className="flex space-x-5">
+              {navButtons.map((button) => (
+                <li
+                  key={button.label}
+                  className="text-white hover:text-gray-300"
+                >
+                  <Link
+                    to={button.path}
+                    className="text-white hover:text-brand-light"
+                  >
+                    {button.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/account">
+                  <AccountCircle className="text-white text-2xl" />
+                </Link>
+              </li>
+            </ul>
+          </nav>
         )}
 
         {/* Hamburger Menu (only on mobile) */}
@@ -77,25 +81,29 @@ const Header: React.FC = () => {
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         )}
-      </Toolbar>
 
-      {/* Mobile Drawer */}
-      <Drawer anchor="right" open={isMobileMenuOpen} onClose={toggleMobileMenu}>
-        <List className="bg-brand w-64">
-          {" "}
-          {/* Tailwind for Drawer */}
-          {navButtons.map((button) => (
-            <ListItem key={button.label} disablePadding>
-              <ListItemButton component={Link} to={button.path}>
-                <ListItemText
-                  primary={button.label}
-                  className="text-white" // Tailwind for text color
-                />
+        {/* Mobile Drawer */}
+        <Drawer
+          anchor="right"
+          open={isMobileMenuOpen}
+          onClose={toggleMobileMenu}
+        >
+          <List className="bg-brand w-64">
+            {navButtons.map((button) => (
+              <ListItem key={button.label} disablePadding>
+                <ListItemButton component={Link} to={button.path}>
+                  <ListItemText primary={button.label} className="text-white" />
+                </ListItemButton>
+              </ListItem>
+            ))}
+            <ListItem disablePadding>
+              <ListItemButton component={Link} to="/account">
+                <ListItemText primary="Account" className="text-white" />
               </ListItemButton>
             </ListItem>
-          ))}
-        </List>
-      </Drawer>
+          </List>
+        </Drawer>
+      </Toolbar>
     </AppBar>
   );
 };
