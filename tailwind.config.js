@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     colors: {
+      brand: {
+        light: '#d5b2ff',
+        DEFAULT: '#7949a3',
+        dark: '#610fb2c7',
+      },
       'blue': '#1fb6ff',
       'purple': '#7e5bef',
       'pink': '#ff49db',
@@ -19,15 +24,18 @@ export default {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
-    },
-    extend: {
-      spacing: {
-        '8xl': '96rem',
-        '9xl': '128rem',
-      },
-      borderRadius: {
-        '4xl': '2rem',
+      hand: ['Edu AU VIC WA NT Hand', 'cursive'],
+      kalnia: ['Kalnia Glaze', 'serif'],
+      manrope: ['Manrope', 'sans-serif'],
+      extend: {
+        spacing: {
+          '8xl': '96rem',
+          '9xl': '128rem',
+        },
+        borderRadius: {
+          '4xl': '2rem',
+        }
       }
-    }
-  },
-}
+    },
+  }
+};
