@@ -1,28 +1,30 @@
-import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Link } from "react-router-dom";
-import Drawer from "@mui/material/Drawer";
+import BookmarkIcon from "@mui/icons-material/Bookmark"; // Import Bookmark icon
+import CloseIcon from "@mui/icons-material/Close";
+import HistoryIcon from "@mui/icons-material/History"; // Import History icon
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import Modal from "@mui/material/Modal";
+import Toolbar from "@mui/material/Toolbar";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import logo from "../assets/img/dionysus-logo-transparent.png"; // Import the logo
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/img/dionysus-logo-transparent.png";
 
 interface NavButton {
   label: string;
   path: string;
+  icon?: React.ReactNode;
 }
 
 const navButtons: NavButton[] = [
-  { label: "Watchlist", path: "/watchlist" },
-  { label: "History", path: "/history" },
+  { label: "Watchlist", path: "/watchlist", icon: <BookmarkIcon /> }, // Add icons here
+  { label: "History", path: "/history", icon: <HistoryIcon /> },
 ];
 
 const Header: React.FC = () => {
@@ -35,15 +37,10 @@ const Header: React.FC = () => {
 
   return (
     <AppBar className="border-none bg-gradient-to-b from-slate-900 to-purple-900">
-      <Toolbar className="flex items-center justify-between px-4">
-        <Typography
-          variant="h4"
-          component={Link}
-          to="/"
-          className="font-bold font-kalina flex-grow bg-gradient-to-tr from-pink-400 to-purple-900 bg-clip-text text-transparent hover:text-brand-light text-left"
-        >
-          <img src={logo} alt="Dionysus Logo" className="w-20 h-20 p-3"></img>
-        </Typography>
+      <Toolbar className="flex items-center justify-between px-4 relative">
+        <Link to="/">
+          <img src={logo} alt="Dionysus Logo" className="w-20 h-20 p-3" />
+        </Link>
 
         {/* Desktop Navigation */}
         {isDesktop && (
@@ -73,37 +70,63 @@ const Header: React.FC = () => {
 
         {/* Hamburger Menu (only on mobile) */}
         {!isDesktop && (
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleMobileMenu}
-          >
-            {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
-        )}
+          <div className="relative">
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleMobileMenu}
+              className="z-10"
+            >
+              {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
 
-        {/* Mobile Drawer */}
-        <Drawer
-          anchor="right"
-          open={isMobileMenuOpen}
-          onClose={toggleMobileMenu}
-        >
-          <List className="bg-brand w-64">
-            {navButtons.map((button) => (
-              <ListItem key={button.label} disablePadding>
-                <ListItemButton component={Link} to={button.path}>
-                  <ListItemText primary={button.label} className="text-white" />
-                </ListItemButton>
-              </ListItem>
-            ))}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} to="/account">
-                <ListItemText primary="Account" className="text-white" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </Drawer>
+            {/* Mobile Modal (with arrow) */}
+            <Modal
+              open={isMobileMenuOpen}
+              onClose={toggleMobileMenu}
+              aria-labelledby="mobile-menu-modal-title"
+              aria-describedby="mobile-menu-modal-description"
+            >
+              <div className="absolute top-16 right-2 w-auto bg-brand-light shadow-2xl rounded-md pl-0 pr-2">
+                <div className="absolute top-0 right-2 -mt-2 w-4 h-4 bg-brand-light transform rotate-45"></div>
+                <List>
+                  {/* Account Link */}
+                  <ListItem disablePadding>
+                    <ListItemButton
+                      component={Link}
+                      to="/account"
+                      onClick={toggleMobileMenu}
+                    >
+                      <AccountCircle className="mr-2 text-black" />{" "}
+                      {/* Icon in Account link */}
+                      <ListItemText className="text-black" primary="Account" />
+                    </ListItemButton>
+                  </ListItem>
+
+                  {navButtons.map((button) => (
+                    <ListItem key={button.label} disablePadding>
+                      <ListItemButton
+                        component={Link}
+                        to={button.path}
+                        onClick={toggleMobileMenu}
+                      >
+                        {button.icon && (
+                          <span className="mr-2 text-black">{button.icon}</span>
+                        )}{" "}
+                        {/* Render the icon */}
+                        <ListItemText
+                          className="text-black"
+                          primary={button.label}
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </div>
+            </Modal>
+          </div>
+        )}
       </Toolbar>
     </AppBar>
   );
