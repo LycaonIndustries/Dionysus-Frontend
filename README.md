@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# Dionysus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Basic Features
 
-Currently, two official plugins are available:
+- User Accounts: Sign-up, login, profile management.
+- Movie/Show Database: Store title, year, genre, etc.
+- Watchlist: Add titles you want to see.
+- Watch History: Track what you've seen.
+- Ratings: Allow users to rate movies and shows.
+- Reviews: Enable users to write reviews.
+- Social Features: Friends, etc.
+- Personalized Recommendations: Use algorithms to suggest movies/shows.
+- Group Watchlists: Share lists with others.
+- Integrations: Connect with other services like TMDb.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tables
 
-## Expanding the ESLint configuration
+- Users: Store user information (username, password, profile data).
+- Movies/Shows: Store movie/show details (title, year, genre, etc.).
+- Ratings: Connect users to movies/shows with ratings.
+- Watchlist: Store user-created watchlists.
+- Watch History: Track movies/shows users have seen.
+- Reviews: Store user reviews.
+- Friends: Manage connections between users.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## API Integration
 
-- Configure the top-level `parserOptions` property like this:
+- TMDb (The Movie Database): Use TMDb's API to retrieve movie and show data.
+- OMDb (Open Movie Database): Another API for searching and retrieving movie information.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This is a work in progress
