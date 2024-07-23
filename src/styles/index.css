@@ -1,89 +1,116 @@
+/* Import Tailwind's base, components, and utilities styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Set the width of the html element to 100% */
 html {
-  width: 100%; /* Good practice, but often redundant */
+  width: 100%;
 }
 
-:root { 
+/* Root styles for the entire document */
+:root {
+  /* Font settings for the root element */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  /* Color and background settings */
   color-scheme: light dark;
-  color: #610fb2c7 rgba(255, 255, 255, 0.87);
+  color: #610fb2c7;
+  /* Main text color with some transparency */
   background-color: #242424;
+  /* Dark background color */
 
+  /* Font rendering settings */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Styles for anchor elements */
 a {
   font-weight: 500;
   color: #646cff;
+  /* Link color */
   text-decoration: inherit;
+  /* Inherit text decoration from parent */
 }
 
+/* Hover styles for anchor elements */
 a:hover {
   color: #535bf2;
+  /* Hover color for links */
 }
 
+/* Body styles */
 body {
   width: 100%;
-  margin: 0; 
-  /* Remove or adjust: */
-  /* display: flex; 
-  place-items: center; 
-  */
-  /* Remove or adjust: */
-  /* min-width: 320px; */
-  min-height: 100vh; 
+  margin: 0;
+  min-height: 100vh;
+  /* Ensure body takes up at least the full viewport height */
 }
 
-.main { 
-  width: 100%; 
+/* Main class styles */
+.main {
+  width: 100%;
 }
 
+/* Styles for h1 elements */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Styles for button elements */
 button {
   border-radius: 8px;
+  /* Rounded corners */
   border: 1px solid transparent;
+  /* Transparent border */
   padding: 0.6em 1.2em;
+  /* Padding inside the button */
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  /* Dark background color for button */
   cursor: pointer;
+  /* Pointer cursor on hover */
   transition: border-color 0.25s;
+  /* Smooth transition for border color on hover */
 }
 
+/* Hover styles for buttons */
 button:hover {
   border-color: #646cff;
+  /* Border color on hover */
 }
 
+/* Focus styles for buttons */
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  /* Outline to indicate focus */
 }
 
+/* Media query for light color scheme preference */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
+    /* Main text color for light mode */
     background-color: #ffffff;
+    /* Background color for light mode */
   }
 
   a:hover {
     color: #747bff;
+    /* Hover color for links in light mode */
   }
 
   button {
     background-color: #f9f9f9;
+    /* Background color for buttons in light mode */
   }
 }

@@ -13,7 +13,6 @@ Dionysus is a web application that streamlines your movie and show watching expe
 - Group Watchlists: Collaborate with friends by creating and sharing watchlists.
 - Integrations: Connect with external services like TMDb and OMDb to access a vast library of movie and show data.
 
-
 ## API Integration
 
 - TMDb (The Movie Database): Utilize TMDb's API to retrieve comprehensive information about movies and shows.

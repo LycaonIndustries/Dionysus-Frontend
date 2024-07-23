@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
 
+// SearchBar component for inputting search queries
 const SearchBar: React.FC = () => {
   return (
     <div className="my-4">
+      {/* Input field for searching with placeholder text */}
       <input
         type="text"
         placeholder="Search..."
@@ -12,4 +14,5 @@ const SearchBar: React.FC = () => {
   );
 };
 
+// Export the SearchBar component as the default export
 export default SearchBar;

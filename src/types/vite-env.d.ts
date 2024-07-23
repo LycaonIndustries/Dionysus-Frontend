@@ -1,2 +1,4 @@
 /// <reference types="vite/client" />
-export type MediaType = 'movie' | 'tv'
+
+// Define a type alias for MediaType, which can be either 'movie' or 'tv'
+export type MediaType = 'movie' | 'tv';

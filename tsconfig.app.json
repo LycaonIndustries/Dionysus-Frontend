@@ -1,27 +1,61 @@
+// Compiler options for TypeScript configuration
 {
   "compilerOptions": {
+    // Enables composite projects for building with project references
     "composite": true,
+    // Path where TypeScript stores incremental compilation info
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    // Specifies the ECMAScript version for the output JavaScript code
     "target": "ES2020",
+    // Uses the 'define' semantics for class fields, ensuring consistency with
+    // JavaScript's new class field definition behavior
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // Includes standard library definitions for ECMAScript 2020, the DOM,
+    // and DOM iterable objects, enabling features like async iteration
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    // Uses ECMAScript 'next' for module code generation, supporting the
+    // latest JavaScript module features
     "module": "ESNext",
+    // Skips type checking for library declaration files to speed up the build process
     "skipLibCheck": true,
-
-    /* Bundler mode */
+    /* Bundler mode settings for module resolution */
+    // Applies module resolution strategies designed for bundlers, allowing for
+    // more flexible imports
     "moduleResolution": "bundler",
+    // Permits importing TypeScript files with explicit '.ts' extensions, enabling
+    // greater control over file imports
     "allowImportingTsExtensions": true,
+    // Supports importing JSON files directly into TypeScript modules
     "resolveJsonModule": true,
+    // Ensures each TypeScript file is compiled in isolation, useful for
+    // environments like Babel or SWC
     "isolatedModules": true,
+    // Forces module detection in files, even if there are no import/export statements,
+    // ensuring consistency in module processing
     "moduleDetection": "force",
+    // Disables emitting of compiled JavaScript files, used when TypeScript is
+    // primarily for type checking and not for output generation
     "noEmit": true,
+    // Specifies the JSX factory for React to use the new JSX transform available
+    // since React 17, simplifying the JSX setup
     "jsx": "react-jsx",
-
-    /* Linting */
+    /* Linting and type-checking options */
+    // Enables all strict type-checking options, improving code quality and safety
     "strict": true,
+    // Reports any local variables that are declared but not used within a program
     "noUnusedLocals": true,
+    // Reports any function parameters that are declared but not used in functions
     "noUnusedParameters": true,
+    // Prevents case fallthrough in switch statements, helping to avoid common
+    // programming errors where cases are accidentally not handled correctly
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  // Specifies which files should be included in the TypeScript compilation process
+  "include": [
+    "src"
+  ]
 }
