@@ -14,3 +14,13 @@ export interface SearchResults {
   totalResults: string; // Total number of results as a string
   Response: string; // Response status as a string
 }
+
+export interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+export interface SignupFormData extends LoginFormData { // Inherit email and password
+  confirmPassword: string;
+  username: string;
+}

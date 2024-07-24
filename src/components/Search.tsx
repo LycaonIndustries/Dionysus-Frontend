@@ -48,7 +48,7 @@ const SearchBar: React.FC = () => {
           <span id="defaultSearchText" className="hidden md:block">
             Go
           </span>
-          <span className="md:hidden flex items-center justify-center w-1 h-5  bg-transparent text-brand-dark text-white">
+          <span className="md:hidden flex items-center justify-center w-1 h-5  bg-transparent text-brand-dark">
             <SearchIcon />
           </span>
         </button>
