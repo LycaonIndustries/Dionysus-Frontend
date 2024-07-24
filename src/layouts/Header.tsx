@@ -47,7 +47,7 @@ const Header: React.FC = () => {
         </Link>
 
         {/* Centered search bar container */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-full max-w-xl">
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-96 max-w-2xl">
           <SearchBar />
         </div>
 
