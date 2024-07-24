@@ -1,4 +1,4 @@
-import { House } from "@mui/icons-material";
+import { House, Login } from "@mui/icons-material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CloseIcon from "@mui/icons-material/Close";
@@ -25,6 +25,7 @@ const navButtons: NavButton[] = [
   { label: "Account", path: "/account", icon: <AccountCircle />, hide: true },
   { label: "Watchlist", path: "/watchlist", icon: <BookmarkIcon /> },
   { label: "History", path: "/history", icon: <HistoryIcon /> },
+  { label: "Login", path: "/auth/login", icon: <Login /> },
 ];
 
 // Header component that contains the navigation bar and responsive menu
