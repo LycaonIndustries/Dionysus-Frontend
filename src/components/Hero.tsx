@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <div className="bg-hero-image bg-cover bg-center flex items-center justify-center text-white">
       <div className="text-center">
-        <button className="bg-brand-light text-black px-4 py-2 rounded">
+        <button className="bg-brand-light text-black rounded">
           Start Watching
         </button>
       </div>

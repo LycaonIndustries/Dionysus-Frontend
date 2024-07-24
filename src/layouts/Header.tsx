@@ -15,8 +15,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/dionysus-logo-transparent.png";
-import { NavButton } from "../interfaces/General";
 import SearchBar from "../components/Search";
+import { NavButton } from "../interfaces/General";
 
 // Array of navigation buttons with their labels, paths, and optional icons
 const navButtons: NavButton[] = [
@@ -46,7 +46,10 @@ const Header: React.FC = () => {
           <img src={logo} alt="Dionysus Logo" className="w-20 p-3" />
         </Link>
 
-        <SearchBar />
+        {/* Centered search bar container */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-full max-w-xl">
+          <SearchBar />
+        </div>
 
         {/* Render DesktopNavigation if on a desktop screen */}
         {isDesktop && <DesktopNavigation navButtons={navButtons} />}
