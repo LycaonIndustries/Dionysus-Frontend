@@ -12,7 +12,7 @@ const Carousel: React.FC<{ data: SearchResults }> = ({ data }) => {
     <div className="overflow-x-auto whitespace-nowrap ">
       <div className="flex space-x-6 overflow-y-scroll no-scrollbar">
         {results.map((item) => (
-          <div key={item.imdbID} className="inline-block h-100">
+          <div key={item.imdbID} className="inline-block">
             <MediaCard media={item as Movie | Show} />
           </div>
         ))}
