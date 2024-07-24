@@ -5,6 +5,7 @@ export interface NavButton {
   label: string; // Button label
   path: string; // Navigation path
   icon?: React.ReactNode; // Optional icon for the button
+  hide?: boolean;
 }
 
 // Define the SearchResults interface to match the input data format

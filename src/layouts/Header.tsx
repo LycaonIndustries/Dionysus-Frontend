@@ -1,3 +1,4 @@
+import { House } from "@mui/icons-material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CloseIcon from "@mui/icons-material/Close";
@@ -20,6 +21,8 @@ import { NavButton } from "../interfaces/General";
 
 // Array of navigation buttons with their labels, paths, and optional icons
 const navButtons: NavButton[] = [
+  { label: "Home", path: "/", icon: <House />, hide: true },
+  { label: "Account", path: "/account", icon: <AccountCircle />, hide: true },
   { label: "Watchlist", path: "/watchlist", icon: <BookmarkIcon /> },
   { label: "History", path: "/history", icon: <HistoryIcon /> },
 ];
@@ -30,7 +33,7 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Hook to check if the screen width is considered desktop
-  const isDesktop = useMediaQuery("(min-width: 600px)");
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   // Function to toggle the visibility of the mobile menu
   const toggleMobileMenu = useCallback(() => {
@@ -40,14 +43,16 @@ const Header: React.FC = () => {
   // Render the Header component with responsive design
   return (
     <AppBar className="border-none bg-gradient-to-b from-slate-900 to-purple-900">
-      <Toolbar className="flex items-center justify-between px-4 relative">
+      <Toolbar className="flex items-center justify-between relative w-full">
         {/* Logo linking to the home page */}
-        <Link to="/">
-          <img src={logo} alt="Dionysus Logo" className="w-20 p-3" />
-        </Link>
+        {isDesktop && (
+          <Link to="/">
+            <img src={logo} alt="Dionysus Logo" className="w-20 p-2" />
+          </Link>
+        )}
 
         {/* Centered search bar container */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-96 max-w-2xl">
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-full max-w-screen-sm px-10">
           <SearchBar />
         </div>
 
@@ -74,13 +79,19 @@ const DesktopNavigation: React.FC<{ navButtons: NavButton[] }> = ({
   <nav className="m-2 p-2">
     <ul className="flex space-x-5">
       {/* Render navigation buttons */}
-      {navButtons.map((button) => (
-        <li key={button.label} className="text-white hover:text-gray-300">
-          <Link to={button.path} className="text-white hover:text-brand-light">
-            {button.label}
-          </Link>
-        </li>
-      ))}
+      {navButtons.map(
+        (button) =>
+          !button.hide && (
+            <li key={button.label} className="text-white hover:text-gray-300">
+              <Link
+                to={button.path}
+                className="text-white hover:text-brand-light"
+              >
+                {button.label}
+              </Link>
+            </li>
+          )
+      )}
       {/* Account link with icon */}
       <li>
         <Link to="/account">
@@ -97,7 +108,7 @@ const MobileNavigation: React.FC<{
   toggleMenu: () => void; // Function to toggle the menu open/close
   navButtons: NavButton[]; // Array of navigation buttons
 }> = ({ isOpen, toggleMenu, navButtons }) => (
-  <div className="relative">
+  <div className="absolute right-4">
     {/* Button to open/close mobile menu */}
     <IconButton
       edge="end"
@@ -114,14 +125,6 @@ const MobileNavigation: React.FC<{
       <div className="absolute top-16 right-2 w-auto bg-brand-light shadow-2xl rounded-md pl-0 pr-2">
         <div className="absolute top-0 right-2 -mt-2 w-4 h-4 bg-brand-light transform rotate-45"></div>
         <List>
-          {/* Account link in mobile menu */}
-          <ListItem disablePadding>
-            <ListItemButton component={Link} to="/account" onClick={toggleMenu}>
-              <AccountCircle className="mr-2 text-black" />{" "}
-              <ListItemText className="text-black" primary="Account" />
-            </ListItemButton>
-          </ListItem>
-
           {/* Render navigation buttons in mobile menu */}
           {navButtons.map((button) => (
             <ListItem key={button.label} disablePadding>
