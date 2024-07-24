@@ -1,29 +1,21 @@
 import React from "react";
-import { Movie, Show } from "../interfaces/Media";
-import { MovieCard, ShowCard } from "./Card";
 import { SearchResults } from "../interfaces/General";
+import { Movie, Show } from "../interfaces/Media";
+import { MediaCard } from "./Card";
 
 // Define the Carousel component
 const Carousel: React.FC<{ data: SearchResults }> = ({ data }) => {
+  // Extract Results from data
+  const results = data.Search;
+
   return (
-    <div className="overflow-x-auto whitespace-nowrap py-4 px-2">
-      <div className="flex space-x-4">
-        {data.Search.map((item) => {
-          if (item.Type === "movie") {
-            return (
-              <div key={item.imdbID} className="inline-block">
-                <MovieCard movie={item as Movie} />
-              </div>
-            );
-          } else if (item.Type === "series") {
-            return (
-              <div key={item.imdbID} className="inline-block">
-                <ShowCard show={item as Show} />
-              </div>
-            );
-          }
-          return null;
-        })}
+    <div className="overflow-x-auto whitespace-nowrap ">
+      <div className="flex space-x-6 overflow-y-scroll no-scrollbar">
+        {results.map((item) => (
+          <div key={item.imdbID} className="inline-block h-100">
+            <MediaCard media={item as Movie | Show} />
+          </div>
+        ))}
       </div>
     </div>
   );
