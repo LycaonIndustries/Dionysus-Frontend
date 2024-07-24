@@ -43,11 +43,11 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 pb-4 mt-4">
+    <div className="pb-4 px-4 ">
       <Hero />
       {searchResults && (
         <FeaturedList
-          title="Recommended for You"
+          title="X-Men Universe"
           searchResults={searchResults}
         />
       )}

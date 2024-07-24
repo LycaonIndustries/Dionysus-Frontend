@@ -15,7 +15,7 @@ const FeaturedList: React.FC<FeaturedListProps> = ({
   searchResults,
 }) => {
   return (
-    <section className="my-8">
+    <section className="w-full">
       {/* Section title */}
       <h3 className="text-2xl font-bold mb-4 text-violet-300">{title}</h3>
 
