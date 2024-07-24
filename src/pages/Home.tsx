@@ -4,7 +4,6 @@ import React from "react";
 // Import components used on the Home page
 import FeaturedList from "../components/Featured";
 import Hero from "../components/Hero";
-import SearchBar from "../components/Search";
 
 // Define the Home component as a functional component with React.FC type
 const Home: React.FC = () => {
@@ -28,8 +27,6 @@ const Home: React.FC = () => {
     <div className="container mx-auto px-4 pb-4 mt-4">
       {/* Render the Hero component */}
       <Hero />
-      {/* Render the SearchBar component */}
-      <SearchBar />
       {/* Render the FeaturedList component for recommended items */}
       <FeaturedList title="Recommended for You" items={recommended} />
       {/* Render the FeaturedList component for trending items */}

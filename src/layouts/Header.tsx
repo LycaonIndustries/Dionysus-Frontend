@@ -1,4 +1,3 @@
-// Import necessary React components and Material-UI elements
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CloseIcon from "@mui/icons-material/Close";
@@ -16,13 +15,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/dionysus-logo-transparent.png";
-
-// Interface for defining properties of navigation buttons
-interface NavButton {
-  label: string; // Button label
-  path: string; // Navigation path
-  icon?: React.ReactNode; // Optional icon for the button
-}
+import { NavButton } from "../interfaces/General";
+import SearchBar from "../components/Search";
 
 // Array of navigation buttons with their labels, paths, and optional icons
 const navButtons: NavButton[] = [
@@ -49,8 +43,10 @@ const Header: React.FC = () => {
       <Toolbar className="flex items-center justify-between px-4 relative">
         {/* Logo linking to the home page */}
         <Link to="/">
-          <img src={logo} alt="Dionysus Logo" className="w-20 h-20 p-3" />
+          <img src={logo} alt="Dionysus Logo" className="w-20 p-3" />
         </Link>
+
+        <SearchBar />
 
         {/* Render DesktopNavigation if on a desktop screen */}
         {isDesktop && <DesktopNavigation navButtons={navButtons} />}
