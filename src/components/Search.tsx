@@ -4,18 +4,6 @@ import React from "react";
 // SearchBar component for inputting search queries
 const SearchBar: React.FC = () => {
   return (
-    // <div className="flex-grow flex justify-center mx-4">
-    //   <div className="relative w-full max-w-lg">
-    //     <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300" />
-    //     <input
-    //       type="text"
-    //       placeholder="Search..."
-    //       className="w-full px-4 py-2 bg-black text-gray-300 rounded-full pl-10"
-    //       />
-    //     <div> ABC </div>
-    //   </div>
-    // </div>
-
     <div className="flex-grow flex justify-center mx-4">
       <div className="relative w-full max-w-lg">
         <div className="search-container flex items-center bg-black text-gray-300 rounded-full h-12">

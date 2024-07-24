@@ -1,39 +1,58 @@
-// Import React library for creating components
-import React from "react";
-
-// Import components used on the Home page
+import React, { useEffect, useState } from "react";
 import FeaturedList from "../components/Featured";
 import Hero from "../components/Hero";
+import { SearchResults } from "../interfaces/General";
+import localData from "../data/demo.json"; // Adjust the path to your local JSON file
 
-// Define the Home component as a functional component with React.FC type
+const fetchSearchResults = async (): Promise<SearchResults> => {
+  try {
+    const response = await fetch("/api/fetch/");
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(
+      "Error fetching search results, falling back to local data:",
+      error
+    );
+    // Fallback to local JSON data
+    return localData as SearchResults;
+  }
+};
+
 const Home: React.FC = () => {
-  // Array of recommended movies
-  const recommended = [
-    { id: 1, name: "Movie 1" },
-    { id: 2, name: "Movie 2" },
-    { id: 3, name: "Movie 3" },
-  ];
+  const [searchResults, setSearchResults] = useState<SearchResults | null>(
+    null
+  );
 
-  // Array of trending shows
-  const trending = [
-    { id: 4, name: "Show 1" },
-    { id: 5, name: "Show 2" },
-    { id: 6, name: "Show 3" },
-  ];
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const results = await fetchSearchResults();
+        setSearchResults(results);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    };
 
-  // Render the Home page
+    getData();
+  }, []);
+
   return (
-    // Container for the page with responsive padding and margin
     <div className="container mx-auto px-4 pb-4 mt-4">
-      {/* Render the Hero component */}
       <Hero />
-      {/* Render the FeaturedList component for recommended items */}
-      <FeaturedList title="Recommended for You" items={recommended} />
-      {/* Render the FeaturedList component for trending items */}
-      <FeaturedList title="Trending Now" items={trending} />
+      {searchResults && (
+        <FeaturedList
+          title="Recommended for You"
+          searchResults={searchResults}
+        />
+      )}
     </div>
   );
 };
 
-// Export the Home component as the default export
 export default Home;

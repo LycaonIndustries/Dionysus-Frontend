@@ -6,7 +6,7 @@
     // Path where TypeScript stores incremental compilation info
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     // Specifies the ECMAScript version for the output JavaScript code
-    "target": "ES2020",
+    "target": "ES6",
     // Uses the 'define' semantics for class fields, ensuring consistency with
     // JavaScript's new class field definition behavior
     "useDefineForClassFields": true,
@@ -34,6 +34,7 @@
     // Ensures each TypeScript file is compiled in isolation, useful for
     // environments like Babel or SWC
     "isolatedModules": true,
+    "esModuleInterop": true,
     // Forces module detection in files, even if there are no import/export statements,
     // ensuring consistency in module processing
     "moduleDetection": "force",
