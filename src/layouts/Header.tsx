@@ -42,7 +42,7 @@ const Header: React.FC = () => {
 
   // Render the Header component with responsive design
   return (
-    <AppBar className="border-none bg-gradient-to-b from-slate-900 to-purple-900">
+    <AppBar className="border-none bg-gradient-to-r from-brand-dark from-10% via-brand to-90% to-brand-dark">
       <Toolbar className="flex items-center justify-between relative w-full">
         {/* Logo linking to the home page */}
         {isDesktop && (
