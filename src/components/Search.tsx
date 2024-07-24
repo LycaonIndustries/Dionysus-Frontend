@@ -1,8 +1,21 @@
+import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import React from "react";
+import React, { useState } from "react";
 
-// SearchBar component for inputting search queries
 const SearchBar: React.FC = () => {
+  // State to manage the search input value
+  const [searchText, setSearchText] = useState("");
+
+  // Handler to update the search text state
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+  };
+
+  // Handler to clear the search text
+  const clearSearch = () => {
+    setSearchText("");
+  };
+
   return (
     <div className="w-full">
       <div className="search-container flex items-center bg-black text-gray-300 rounded-full h-12">
@@ -14,15 +27,19 @@ const SearchBar: React.FC = () => {
           autoComplete="off"
           placeholder="Search..."
           className="search-input flex-grow bg-transparent text-gray-300 placeholder-gray-500 outline-none px-4 py-2"
+          value={searchText}
+          onChange={handleInputChange}
         />
-        <button
-          id="clearsearchresults"
-          type="button"
-          className="text-gray-500 hover:text-gray-400 transition duration-200 mr-2"
-          style={{ display: "none" }}
-        >
-          X
-        </button>
+        {searchText && (
+          <button
+            id="clearsearchresults"
+            type="button"
+            className="bg-transparent border-none p-0 text-white hover:text-brand transition duration-200 mr-2"
+            onClick={clearSearch}
+          >
+            <CloseIcon className="p-0"/>
+          </button>
+        )}
         <button
           id="SearchButtonTeacher"
           type="submit"
@@ -40,5 +57,4 @@ const SearchBar: React.FC = () => {
   );
 };
 
-// Export the SearchBar component as the default export
 export default SearchBar;
