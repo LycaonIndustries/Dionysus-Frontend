@@ -10,7 +10,7 @@ export const MediaCard: React.FC<{ media: Media }> = ({ media }) => {
   return (
     <div className="flex flex-col bg-transparent shadow-lg w-56 transition-transform duration-300 ease-in-out transform hover:scale-105">
       <div className="h-80">
-        <a href={`/${media.Type}s/${media.imdbID}`}>
+        <a href={`/${media.Type}s?id=${media.imdbID}`}>
           <img
             src={media.Poster}
             alt={`${media.Title} Poster`}
