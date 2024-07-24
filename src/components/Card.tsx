@@ -8,7 +8,7 @@ export const MediaCard: React.FC<{ media: Media }> = ({ media }) => {
   const isShow = "numOfSeasons" in media;
 
   return (
-    <div className="flex flex-col bg-transparent shadow-lg items-center w-56">
+    <div className="flex flex-col bg-transparent shadow-lg w-56 transition-transform duration-300 ease-in-out transform hover:scale-105">
       <div className="h-80">
         <a href={`/${media.Type}s/${media.imdbID}`}>
           <img
