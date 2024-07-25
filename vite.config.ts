@@ -11,7 +11,7 @@ export default defineConfig({
 
   // Optimize dependencies
   optimizeDeps: {
-    include: ["@emotion/styled"], // Include '@emotion/styled' for optimization to speed up development builds
+    include: [],
   },
 
   // Configure CSS processing
