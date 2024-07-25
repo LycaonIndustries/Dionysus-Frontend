@@ -1,6 +1,6 @@
-import CloseIcon from "@mui/icons-material/Close";
-import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 
 const SearchBar: React.FC = () => {
   // State to manage the search input value
@@ -18,7 +18,7 @@ const SearchBar: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="search-container flex items-center bg-black text-gray-300 rounded-full h-12">
+      <div className="search-container flex items-center bg-background-950 text-primary-50 rounded-full h-12">
         <input
           type="text"
           spellCheck="false"
@@ -26,7 +26,7 @@ const SearchBar: React.FC = () => {
           name="searchString"
           autoComplete="off"
           placeholder="Search..."
-          className="search-input flex-grow bg-transparent text-gray-300 placeholder-gray-500 outline-none px-4 py-2"
+          className="search-input flex-grow bg-transparent text-primary-50 placeholder-primary-200 outline-none px-4 py-2"
           value={searchText}
           onChange={handleInputChange}
         />
@@ -34,22 +34,19 @@ const SearchBar: React.FC = () => {
           <button
             id="clearsearchresults"
             type="button"
-            className="bg-transparent border-none p-0 text-white hover:text-brand transition duration-200 mr-2"
+            className="bg-transparent border-none p-0 text-primary-50 hover:text-brand transition duration-200 mr-2"
             onClick={clearSearch}
           >
-            <CloseIcon className="p-0"/>
+            <GrFormClose />
           </button>
         )}
         <button
           id="SearchButtonTeacher"
           type="submit"
-          className="search-button bg-brand-light text-brand-dark rounded-full items-center hover:bg-brand-dark transition duration-200 mr-1 py-2 px-4"
+          className="search-button bg-primary-300 text-brand-dark rounded-full items-center hover:bg-secondary-500 transition duration-200 mr-1 p-2"
         >
-          <span id="defaultSearchText" className="hidden md:block">
-            Go
-          </span>
-          <span className="md:hidden flex items-center justify-center w-1 h-5  bg-transparent text-brand-dark">
-            <SearchIcon />
+          <span className="flex items-center justify-center bg-transparent text-secondary-900">
+            <FaSearch />
           </span>
         </button>
       </div>
