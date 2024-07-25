@@ -17,7 +17,7 @@ const FeaturedList: React.FC<FeaturedListProps> = ({
   return (
     <section className="w-full">
       {/* Section title */}
-      <h3 className="text-2xl font-bold mb-4 text-violet-300">{title}</h3>
+      <h3 className="text-2xl pl-5 font-bold my-4 text-primary-100">{title}</h3>
 
       {/* Render the Carousel with search results */}
       <Carousel data={searchResults} />
