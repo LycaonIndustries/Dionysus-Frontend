@@ -33,30 +33,44 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <div className="border-none bg-gradient-to-r from-background-800 to-background-800 via-background-950 fixed rounded-full w-[98%] px-1 top-5 left-1/2 -translate-x-1/2 h-16">
-      <div className="flex flex-grow items-center justify-between w-full">
-        {/* Logo (only on desktop) */}
-        {isDesktop && (
-          <Link to="/">
-            <img src={logo} alt="Dionysus Logo" className="w-16 p-2" />
-          </Link>
+    <div className="flex flex-grow items-center justify-between border-none bg-gradient-to-r from-background-800 to-background-800 via-background-950 fixed rounded-full w-[98%] px-1 top-5 left-1/2 -translate-x-1/2 h-16">
+      <div className="flex items-center justify-between w-full space-x-2">
+        {/* Start Section */}
+        {isDesktop ? (
+          <div className="flex items-center">
+            <Link to="/">
+              <img src={logo} alt="Dionysus Logo" className="w-16 p-2" />
+            </Link>
+          </div>
+        ) : (
+          <div className="relative w-full px-2">
+            <SearchBar />
+          </div>
         )}
 
-        {/* Search Bar (centered) */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-full max-w-screen-sm px-10">
-          <SearchBar />
+        {/* Center Section */}
+        <div className="flex-grow flex justify-center">
+          {isDesktop ? (
+            <div className="relative w-full max-w-screen-md pl-56">
+              <SearchBar />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
 
-        {/* Navigation */}
-        {isDesktop ? (
-          <DesktopNavigation navButtons={navButtons} />
-        ) : (
-          <MobileNavigation
-            isOpen={isMobileMenuOpen}
-            toggleMenu={toggleMobileMenu}
-            navButtons={navButtons}
-          />
-        )}
+        {/* End Section */}
+        <div className="flex items-center">
+          {isDesktop ? (
+            <DesktopNavigation navButtons={navButtons} />
+          ) : (
+            <MobileNavigation
+              isOpen={isMobileMenuOpen}
+              toggleMenu={toggleMobileMenu}
+              navButtons={navButtons}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
@@ -94,30 +108,39 @@ const MobileNavigation: React.FC<{
   toggleMenu: () => void;
   navButtons: NavButton[];
 }> = ({ isOpen, toggleMenu, navButtons }) => (
-  <div className="relative">
-    {/* Make sure the menu is positioned relative to this */}
-    {/* Hamburger/Close Button */}
-    <button onClick={toggleMenu} className="absolute right-0 z-10">
+  <div className="relative pr-4">
+    <button
+      onClick={toggleMenu}
+      className="bg-primary-300 text-secondary-800 rounded-full p-2"
+      aria-label="Toggle menu"
+      aria-expanded={isOpen}
+    >
       {isOpen ? <GrFormClose /> : <TiThMenu />}
     </button>
-    {/* Mobile Menu Modal */}
-    <ul
-      className={`absolute top-16 right-0 w-auto bg-brand-light shadow-2xl rounded-md pl-0 pr-2 transition-all duration-300 ${
-        isOpen ? "opacity-100" : "opacity-0 hidden"
+    <div
+      className={`absolute top-16 right-0 bg-gradient-to-bl from-secondary-800 to-background-950 shadow-2xl rounded-md transition-transform duration-300 ${
+        isOpen
+          ? "transform translate-y-0 opacity-100 z-50 !important"
+          : "transform -translate-y-4 opacity-0 pointer-events-none"
       }`}
     >
-      <div className="absolute top-0 right-2 -mt-2 w-4 h-4 bg-brand-light transform rotate-45"></div>
-      {navButtons.map((button) => (
-        <li key={button.label} onClick={toggleMenu}>
-          {" "}
-          {/* Close menu on click */}
-          <Link to={button.path}>
-            {button.icon && <span className="mr-2">{button.icon}</span>}
-            <span>{button.label}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
+      <div className="absolute -top-2 right-6 transform rotate-45 bg-secondary-800 w-4 h-4"></div>
+      <ul>
+        {navButtons.map((button) => (
+          <li key={button.label} className="py-2 px-4">
+            <Link
+              to={button.path}
+              className="flex items-center text-text-200 hover:text-white"
+              onClick={toggleMenu}
+            >
+              {button.icon && <span className="mr-2">{button.icon}</span>}
+              <span>{button.label}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 );
+
 export default Header;

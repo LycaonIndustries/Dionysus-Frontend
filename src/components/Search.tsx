@@ -43,7 +43,7 @@ const SearchBar: React.FC = () => {
         <button
           id="SearchButtonTeacher"
           type="submit"
-          className="search-button bg-primary-300 text-brand-dark rounded-full items-center hover:bg-secondary-500 transition duration-200 mr-1 p-2"
+          className="search-button bg-primary-300 text-brand-dark rounded-full items-center hover:bg-secondary-300 transition duration-200 mr-1 p-2"
         >
           <span className="flex items-center justify-center bg-transparent text-secondary-900">
             <FaSearch />

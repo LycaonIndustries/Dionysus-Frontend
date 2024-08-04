@@ -43,7 +43,7 @@ export const AuthForm: React.FC = () => {
 
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="bg-brand-dark text-white shadow-md border border-brand rounded-lg w-96 px-8 py-10 mb-4">
+      <div className="text-white shadow-md border border-brand rounded-lg w-96 px-8 py-10 mb-4 bg-gradient-to-b from-secondary-950 from-10% to-secondary-950 to-95% via-secondary-800 via-45%">
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Dionysus Logo" className="w-36 h-auto" />
@@ -101,7 +101,7 @@ export const AuthForm: React.FC = () => {
 
           <button
             type="submit"
-            className="bg-brand-light hover:bg-brand text-brand-dark font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-secondary-800 hover:bg-brand text-primary-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             {isLoginMode ? "Sign In" : "Sign Up"}
           </button>
@@ -115,7 +115,7 @@ export const AuthForm: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsLoginMode(!isLoginMode)}
-              className="text-brand-light bg-transparent py-0 px-2 hover:underline"
+              className="text-primary-100 bg-transparent py-0 px-2 hover:underline"
             >
               {isLoginMode ? <> Sign Up </> : <>Sign In </>}
             </button>
