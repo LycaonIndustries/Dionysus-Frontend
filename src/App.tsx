@@ -4,6 +4,7 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 // Import layout components
+import Header from "./layouts/Header";
 import Body from "./layouts/Body";
 import Footer from "./layouts/Footer";
 
@@ -20,6 +21,8 @@ const App: React.FC = () => {
   return (
     // Wrap the application with Router for enabling routing
     <Router>
+      {/* Render the Header component */}
+      <Header />
       {/* Render the Body component, which contains the main content area */}
       <Body>
         {/* Define the routes for the application */}
