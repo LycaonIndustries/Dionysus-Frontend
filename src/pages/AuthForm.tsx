@@ -42,7 +42,7 @@ export const AuthForm: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="h-[80vh] flex items-center justify-center">
       <div className="text-white shadow-md border border-brand rounded-lg w-96 px-8 py-10 mb-4 bg-gradient-to-b from-secondary-950 from-10% to-secondary-950 to-95% via-secondary-800 via-45%">
         {/* Logo */}
         <div className="flex justify-center mb-6">

@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-import { BiSolidLogInCircle } from "react-icons/bi";
 import { FaHistory } from "react-icons/fa";
 import { FaBookmark, FaHouse } from "react-icons/fa6";
 import { GrFormClose } from "react-icons/gr";

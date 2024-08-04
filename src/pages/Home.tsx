@@ -43,7 +43,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="pb-4 px-4 ">
+    <div className="pb-4 px-4">
       <Hero />
       {searchResults && (
         <FeaturedList
