@@ -11,8 +11,7 @@ import Footer from "./layouts/Footer";
 // Import page components for routing
 import History from "./pages/History";
 import Home from "./pages/Home";
-import { AuthForm } from "./pages/AuthForm";
-import Profile from "./pages/Profile";
+import Account from "./pages/Account";
 import WatchList from "./pages/WatchList";
 
 // Define the main App component as a functional component with React.FC type
@@ -34,8 +33,7 @@ const App: React.FC = () => {
           {/* Route for the history page */}
           <Route path="/history" element={<History />} />
           {/* Route for the profile/account page */}
-          <Route path="/account" element={<Profile />} />
-          <Route path="/auth/login" element={<AuthForm />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </Body>
       {/* Render the Footer component */}

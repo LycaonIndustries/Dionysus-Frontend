@@ -21,7 +21,6 @@ const navButtons: NavButton[] = [
   },
   { label: "Watchlist", path: "/watchlist", icon: <FaBookmark /> },
   { label: "History", path: "/history", icon: <FaHistory /> },
-  { label: "LogIn", path: "/auth/login", icon: <BiSolidLogInCircle /> },
 ];
 
 const Header: React.FC = () => {
